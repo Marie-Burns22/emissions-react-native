@@ -1,5 +1,5 @@
-import React from 'react';
-import { FlatList, ActivityIndicator, Text, View } from 'react-native';
+import * as React from 'react';
+import { FlatList, ActivityIndicator, View, Button, Text } from 'react-native';
 
 export default class TestStarWars extends React.Component {
 
@@ -26,10 +26,7 @@ export default class TestStarWars extends React.Component {
             });
     }
 
-
-
     render() {
-
         if (this.state.isLoading) {
             return (
                 <View style={{ flex: 1, padding: 20 }}>
@@ -44,6 +41,10 @@ export default class TestStarWars extends React.Component {
                     data={this.state.dataSource}
                     renderItem={({ item }) => <Text>{item.title}, {item.releaseYear}</Text>}
                     keyExtractor={({ id }, index) => id}
+                />
+                <Button
+                    title="Home"
+                    onPress={() => this.props.navigation.navigate('Home')}
                 />
             </View>
         );
